@@ -1,0 +1,219 @@
+<?php $__env->startSection('content'); ?>
+
+  <div class="page-content row">
+    <!-- Page header -->
+    <div class="page-header">
+      <div class="page-title">
+        <h3> <?php echo e($pageTitle); ?> <small><?php echo e($pageNote); ?></small></h3>
+      </div>
+      <ul class="breadcrumb">
+        <li><a href="<?php echo e(URL::to('dashboard')); ?>"><?php echo e(Lang::get('core.home')); ?></a></li>
+		<li><a href="<?php echo e(URL::to('customer?return='.$return)); ?>"><?php echo e($pageTitle); ?></a></li>
+        <li class="active"><?php echo e(Lang::get('core.addedit')); ?> </li>
+      </ul>
+	  	  
+    </div>
+ 
+ 	<div class="page-content-wrapper">
+
+		<ul class="parsley-error-list">
+			<?php foreach($errors->all() as $error): ?>
+				<li><?php echo e($error); ?></li>
+			<?php endforeach; ?>
+		</ul>
+<div class="sbox animated fadeInRight">
+	<div class="sbox-title"> <h4> <i class="fa fa-table"></i> </h4></div>
+	<div class="sbox-content"> 	
+
+		 <?php echo Form::open(array('url'=>'customer/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')); ?>
+
+<div class="col-md-6">
+						<fieldset><legend> Customer Details </legend>
+									
+								  <div class="form-group hidethis " style="display:none;">
+									<label for="Customer ID" class=" control-label col-md-4 text-left"> Customer ID </label>
+									<div class="col-md-6">
+									  <?php echo Form::text('CustomerId', $row['CustomerId'],array('class'=>'form-control', 'placeholder'=>'',   )); ?> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="Customer Name" class=" control-label col-md-4 text-left"> Customer Name <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <?php echo Form::text('FullName', $row['FullName'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )); ?> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="Customer Address" class=" control-label col-md-4 text-left"> Customer Address </label>
+									<div class="col-md-6">
+									  <textarea name='CustomerAddress' rows='5' id='CustomerAddress' class='form-control '  
+				           ><?php echo e($row['CustomerAddress']); ?></textarea> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="Mobile Number" class=" control-label col-md-4 text-left"> Mobile Number <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <?php echo Form::text('Phone', $row['Phone'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true', 'parsley-type'=>'number'   )); ?> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="Area" class=" control-label col-md-4 text-left"> Area </label>
+									<div class="col-md-6">
+									  <select name='Area' rows='5' id='Area' class='select2 '   ></select> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="Box ID" class=" control-label col-md-4 text-left"> Box ID </label>
+									<div class="col-md-6">
+									  <?php echo Form::text('BoxId', $row['BoxId'],array('class'=>'form-control', 'placeholder'=>'',   )); ?> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="Customer Type" class=" control-label col-md-4 text-left"> Customer Type <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <?php $Customertype = explode(",",$row['Customertype']); ?>
+					 <label class='checked checkbox-inline'>   
+					<input type='checkbox' name='Customertype[]' value ='self' required  class='' 
+					<?php if(in_array('self',$Customertype)): ?>checked <?php endif; ?> 
+					 /> Self </label> 
+					 <label class='checked checkbox-inline'>   
+					<input type='checkbox' name='Customertype[]' value ='rent' required  class='' 
+					<?php if(in_array('rent',$Customertype)): ?>checked <?php endif; ?> 
+					 /> Rent </label>  
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> </fieldset>
+			</div>
+			
+			<div class="col-md-6">
+						<fieldset><legend> Conection Details</legend>
+									
+								  <div class="form-group  " >
+									<label for="Connection Date" class=" control-label col-md-4 text-left"> Connection Date <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  
+				<div class="input-group m-b" style="width:150px !important;">
+					<?php echo Form::text('ConnectionDate', $row['ConnectionDate'],array('class'=>'form-control date')); ?>
+
+					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+				</div> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="Pakage" class=" control-label col-md-4 text-left"> Pakage <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <select name='Pakage' rows='5' id='Pakage' class='select2 ' required  ></select> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="Connection Fee" class=" control-label col-md-4 text-left"> Connection Fee <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <?php echo Form::text('ConnectionFee', $row['ConnectionFee'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )); ?> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="Bill Due" class=" control-label col-md-4 text-left"> Bill Due </label>
+									<div class="col-md-6">
+									  <?php echo Form::text('BillDue', $row['BillDue'],array('class'=>'form-control', 'placeholder'=>'',   )); ?> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="Pakage Fee" class=" control-label col-md-4 text-left"> Pakage Fee <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <?php echo Form::text('Pakagefee', $row['Pakagefee'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )); ?> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="Conection Status" class=" control-label col-md-4 text-left"> Conection Status <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <?php $Status = explode(",",$row['Status']); ?>
+					 <label class='checked checkbox-inline'>   
+					<input type='checkbox' name='Status[]' value ='active' required  class='' 
+					<?php if(in_array('active',$Status)): ?>checked <?php endif; ?> 
+					 /> Active </label> 
+					 <label class='checked checkbox-inline'>   
+					<input type='checkbox' name='Status[]' value ='inactive' required  class='' 
+					<?php if(in_array('inactive',$Status)): ?>checked <?php endif; ?> 
+					 /> InActive </label>  
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> </fieldset>
+			</div>
+			
+			
+<div style="clear:both"></div>	
+					
+				  <div class="form-group">
+					<label class="col-sm-4 text-right">&nbsp;</label>
+					<div class="col-sm-8">	
+					<button type="submit" name="apply" class="btn btn-info btn-sm" ><i class="fa  fa-check-circle"></i> <?php echo e(Lang::get('core.sb_apply')); ?></button>
+					<button type="submit" name="submit" class="btn btn-primary btn-sm" ><i class="fa  fa-save "></i> <?php echo e(Lang::get('core.sb_save')); ?></button>
+					<button type="button" onclick="location.href='<?php echo e(URL::to('customer?return='.$return)); ?>' " class="btn btn-success btn-sm "><i class="fa  fa-arrow-circle-left "></i>  <?php echo e(Lang::get('core.sb_cancel')); ?> </button>
+					</div>	  
+			
+				  </div> 
+		 
+		 <?php echo Form::close(); ?>
+
+	</div>
+</div>		 
+</div>	
+</div>			 
+   <script type="text/javascript">
+	$(document).ready(function() { 
+		$('.addC').relCopy({});
+		
+		$("#Area").jCombo("<?php echo e(URL::to('customer/comboselect?filter=area:arename:arename')); ?>",
+		{  selected_value : '<?php echo e($row["Area"]); ?>' });
+		
+		$("#Pakage").jCombo("<?php echo e(URL::to('customer/comboselect?filter=pakage:PakageId:PakageName|PakageFee')); ?>",
+		{  selected_value : '<?php echo e($row["Pakage"]); ?>' });
+		 
+
+		$('.removeCurrentFiles').on('click',function(){
+			var removeUrl = $(this).attr('href');
+			$.get(removeUrl,function(response){});
+			$(this).parent('div').empty();	
+			return false;
+		});		
+		
+	});
+	</script>		 
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

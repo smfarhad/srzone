@@ -1,0 +1,163 @@
+<?php $__env->startSection('content'); ?>
+<div class="page-content row">
+    <!-- Page header -->
+    <div class="page-header">
+      <div class="page-title">
+        <h3> <?php echo e($pageTitle); ?> <small><?php echo e($pageNote); ?></small></h3>
+      </div>
+      <ul class="breadcrumb">
+        <li><a href="<?php echo e(URL::to('dashboard')); ?>"><?php echo e(Lang::get('core.home')); ?></a></li>
+		<li><a href="<?php echo e(URL::to('customer?return='.$return)); ?>"><?php echo e($pageTitle); ?></a></li>
+        <li class="active"> <?php echo e(Lang::get('core.detail')); ?> </li>
+      </ul>
+	 </div>  
+	 
+	 
+ 	<div class="page-content-wrapper m-t">   
+
+<div class="sbox animated fadeInRight">
+	<div class="sbox-title"> 
+   		<a href="<?php echo e(URL::to('customer?return='.$return)); ?>" class="tips btn btn-xs btn-default pull-right" title="<?php echo e(Lang::get('core.btn_back')); ?>"><i class="fa fa-arrow-circle-left"></i>&nbsp;<?php echo e(Lang::get('core.btn_back')); ?></a>
+		<?php if($access['is_add'] ==1): ?>
+   		<a href="<?php echo e(URL::to('customer/update/'.$id.'?return='.$return)); ?>" class="tips btn btn-xs btn-primary pull-right" title="<?php echo e(Lang::get('core.btn_edit')); ?>"><i class="fa fa-edit"></i>&nbsp;<?php echo e(Lang::get('core.btn_edit')); ?></a>
+		<?php endif; ?> 
+	</div>
+	<div class="sbox-content" style="background:#fff;"> 	
+
+		<table class="table table-striped table-bordered" >
+			<tbody>	
+		
+					<tr>
+						<td width='30%' class='label-view text-right'>Customer ID</td>
+						<td><?php echo e($row->CustomerId); ?> </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Customer Name</td>
+						<td><?php echo e($row->FullName); ?> </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>CustomerAddress</td>
+						<td><?php echo e($row->CustomerAddress); ?> </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Mobile </td>
+						<td><?php echo e($row->Phone); ?> </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Connection Date</td>
+						<td><?php echo e($row->ConnectionDate); ?> </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>ConnectionFee</td>
+						<td><?php echo e($row->ConnectionFee); ?> </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Package Name</td>
+						<td><?php echo SiteHelpers::gridDisplayView($row->Pakage,'Pakage','1:pakage:PakageId:PakageName'); ?> </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Area Name</td>
+						<td><?php echo SiteHelpers::gridDisplayView($row->Area,'Area','1:area:arename:arename'); ?> </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>BoxId</td>
+						<td><?php echo e($row->BoxId); ?> </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>BillDue</td>
+						<td><?php echo e($row->BillDue); ?> </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Customer Status</td>
+						<td><?php echo e($row->Status); ?> </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Pakagefee</td>
+						<td><?php echo e($row->Pakagefee); ?> </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Customertype</td>
+						<td><?php echo e($row->Customertype); ?> </td>
+						
+					</tr>
+				
+			</tbody>	
+		</table>   
+
+	 	<hr />
+	
+	<h5> Payment Details </h5>
+	
+	<div class="table-responsive">
+    <table class="table table-striped ">
+        <thead>
+			<tr>
+				<th class="number"> No </th>
+					<?php foreach($subgrid['tableGrid'] as $t): ?>
+					<?php if($t['view'] =='1'): ?>
+						<th><?php echo e($t['label']); ?></th>
+					<?php endif; ?>
+				<?php endforeach; ?>
+				
+			  </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach($subgrid['rowData'] as $row): ?>
+            <tr>
+				<td width="30">  </td>		
+			 <?php foreach($subgrid['tableGrid'] as $field): ?>
+				 <?php if($field['view'] =='1' ): ?>
+				 <td>					 
+				 	<?php if($field['attribute']['image']['active'] =='1'): ?>
+						<?php echo SiteHelpers::showUploadedFile($row->$field['field'],$field['attribute']['image']['path']); ?>
+
+					<?php else: ?>	
+						<?php /**/ $conn = (isset($field['conn']) ? $field['conn'] : array() ) /**/ ?>
+						<?php echo SiteHelpers::gridDisplay($row->$field['field'],$field['field'],$conn); ?>	
+					<?php endif; ?>						 
+				 </td>
+				 <?php endif; ?>					 
+			 
+			 <?php endforeach; ?>
+			<?php endforeach; ?>
+			</tr> 
+
+
+        </tbody>	
+
+     </table>   
+     </div>
+	
+	</div>
+</div>	
+
+	</div>
+</div>
+	  
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

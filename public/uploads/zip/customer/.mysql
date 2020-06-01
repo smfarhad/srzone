@@ -1,0 +1,99 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Dec 29, 2016 at 06:34 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `srzone`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer`
+--
+
+CREATE TABLE `customer` (
+  `CustomerId` int(11) NOT NULL,
+  `FullName` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `CustomerAddress` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `Phone` varchar(24) CHARACTER SET utf8 DEFAULT NULL,
+  `ConnectionDate` date DEFAULT NULL,
+  `ConnectionFee` decimal(7,2) DEFAULT '99999.99',
+  `Pakage` text CHARACTER SET utf8 NOT NULL,
+  `Area` text NOT NULL,
+  `BoxId` varchar(24) CHARACTER SET utf8 DEFAULT NULL,
+  `BillDue` decimal(7,2) DEFAULT NULL,
+  `Status` enum('active','inactive','close') NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`CustomerId`, `FullName`, `CustomerAddress`, `Phone`, `ConnectionDate`, `ConnectionFee`, `Pakage`, `Area`, `BoxId`, `BillDue`, `Status`) VALUES
+(24, 'Bimol chendro roy ', 'medical pakar matha ', '0164889892', '2016-11-22', '0.00', 'P2', 'Pakar Matha Right', 'BX-1', '0.00', 'active'),
+(25, 'Md. Milon ', 'Pakar matha', '01920406080', '2016-11-03', '0.00', 'P1', 'Pakar Matha Right', 'box-2', '1750.00', 'active'),
+(26, 'Md. khokon ', 'Pakar matha', '01719302318', '2016-11-03', '0.00', 'P1', 'Pakar Matha Right', 'box-3', '1950.00', 'active'),
+(27, 'Md. Abdus Salam', 'pakar matha', '01729734430', '2016-11-25', '0.00', 'P1', 'Pakar Matha Right', 'bx004', '0.00', 'active'),
+(28, 'Md. A Mannan', 'pakar matha', '01715771810', '2016-12-06', '0.00', 'P1', 'Pakar Matha Right', 'BX005', '200.00', 'active'),
+(29, 'Md. Rahomotulla', 'Pakar Matha', '01761313907', '2016-12-06', '0.00', 'P1', 'Pakar Matha Right ', '', '600.00', 'active'),
+(30, 'Md. Abul Ksem ', 'Pakar Matha ', '01718755525', '2016-12-07', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active'),
+(31, 'Md. Kamrul Hasan', 'Pakar Matha ', '01713245225', '2016-12-07', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active'),
+(32, 'Md. Moniruzzaman Mon', 'Pakar Matha ', '01724672188', '2016-12-07', '0.00', 'P1', 'Pakar Matha Right ', '', '750.00', 'active'),
+(33, 'Md. Sajed', 'Pakar Matha ', '01724674472', '2016-12-07', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active'),
+(36, 'Md. Arif', 'Pakar Matha ', '01971250617', '2016-12-07', '0.00', 'P2', 'Pakar Matha Right ', '', '1200.00', 'active'),
+(35, 'Md. Mahamudun Nobe', 'Pakar Matha ', '01847094236', '2016-12-07', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active'),
+(37, 'Md. Nazmul Alam', 'Pakar Matha ', '01719860234', '2016-12-07', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active'),
+(38, 'Md. shakhoyat', 'Pakar Matha ', '01719037080', '2016-12-07', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active'),
+(39, 'Md. Khaled Hassian', 'Pakar Matha ', '01712898149', '2016-12-07', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active'),
+(40, 'Abdus Samad', 'Pakar Matha ', '01755419705', '2016-12-07', '0.00', 'P2', 'Pakar Matha Right ', '', '1200.00', 'active'),
+(41, 'Md. Anis-ul-Abedin', 'Pakar Matha ', '01736688647', '2016-12-07', '0.00', 'P1', 'Pakar Matha Right ', '', '2200.00', 'active'),
+(42, 'Most. Asia Khatun', 'Pakar Matha ', '01774538578', '0000-00-00', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active'),
+(43, 'Abulkalam Azad', 'Pakar Matha ', '01921857167', '0000-00-00', '0.00', 'P1', 'Pakar Matha Right ', '', '150.00', 'active'),
+(44, 'Waliul Islam Rumon', 'Pakar Matha ', '01631228646', '0000-00-00', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active'),
+(45, 'Md. Mostofa Kamal', 'Pakar Matha ', '01718066370', '0000-00-00', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active'),
+(46, 'Md. Mukul', 'Pakar Matha ', '01845990201', '0000-00-00', '0.00', 'P1', 'Pakar Matha Right ', '', '900.00', 'active'),
+(47, 'Md. Enamul Hoq', 'Pakar Matha ', '01970070299', '0000-00-00', '0.00', 'P1', 'Pakar Matha Right ', '', '0.00', 'active'),
+(48, 'Md. Kawsar ', 'Pakar Matha ', '01753408233', '0000-00-00', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active'),
+(49, 'Md. Najmul haque', 'Pakar Matha ', '01795645450', '0000-00-00', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active'),
+(50, 'Md. morsad sarowar J', 'Pakar Matha ', '01724777850', '0000-00-00', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active'),
+(51, 'Jewel Ahammed ', 'Pakar Matha ', '01735610196', '0000-00-00', '0.00', 'P1', 'Pakar Matha Right ', '', '300.00', 'active'),
+(52, '0', 'pakar Matha', '0', '0000-00-00', '0.00', 'P2', 'Pakar Matha Right ', '', '0.00', 'active');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`CustomerId`),
+  ADD KEY `IFK_ConnectionFee` (`ConnectionFee`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
